@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Lodash Presentation RSS</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
@@ -13,6 +13,24 @@
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
 
+		<style>
+			.left {
+				text-align: left;
+				font-size: 20px;
+			}
+			.hljs.custom {
+				font-size: 16px;
+				line-height: 24px;
+			}
+			.hljs.large.code {
+				text-align: center;
+				font-size: 36px;
+				line-height: 40px;
+			}
+			.camel-link {
+				margin-left: 30px;
+			}
+		</style>
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -25,8 +43,299 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>_Lodash</h1>
+					<p>by Evgeniy Zhuk</p>
+					<aside class="notes">
+						Hi, everyone! My name is Evgeniy, and today i want to tell you about Lodash.
+					</aside>
+				</section>
+				<section>
+					<section>
+						<h2>What is lodash?</h2>
+						<p>Lodash is a JavaScript library which provides utility functions for common programming tasks using the functional programming paradigm.</p>
+						<aside class="notes">So, What is Lodash?
+							Lodash is a JavaScript library which provides utility functions for common programming tasks using the functional programming paradigm. 
+						</aside>
+					</section>
+					<section>
+						<p>Lodash takes the hassle out especially when working with arrays, numbers, objects, strings.</p>
+						<ul>
+							<li>Iterating over arrays, objects, strings</li>
+							<li>Manipulating and test values</li>
+							<li>Creating composite functions</li>
+						</ul>
+						<aside class="notes">
+							Lodash takes the hassle out especially when working with arrays, numbers, objects, strings.
+							
+							- Iterating over arrays, objects, strings
+							- Manipulating and test values
+							- Creating composite functions (next func use result of prev func)
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Why you should use Lodash?</h2>
+						<aside class="notes">Why you should use Lodash?</aside>
+					</section>
+					<section>
+						<h3>Pros</h3>
+						<ul class="fragment">
+							<li>Consistency across all major browsers irrespective of their versions.</li>
+							<li>Allows build semantic data flows</li>
+							<li>Facilitates writing pure simple functions</li>
+							<li>Documentation is nice and concise</li>
+							<li>Easy to start with</li>
+						</ul>
+						<aside class="notes">
+							pros/cons
+							Pros
+							- Consistency across all major browsers irrespective of their versions.
+							- Allows build semantic data flows
+							- Facilitates writing pure simple functions
+							- Documentation is nice and concise
+							- Easy to start with
+						</aside>
+					</section>
+					<section>
+						<h3>Cons</h3>
+						<ul class="fragment">
+							<li>Most of errors are silently suppressed and you just get some unobvious value like empty array or object or undefined</li>
+							<li>One more external dependency</li>
+							<li>Lacks for lazy evaluations</li>
+						</ul>
+						<aside class="notes">
+							Cons
+							- Most of errors are silently suppressed and you just get some unobvious value like empty array or object or undefined
+							- One more external dependency
+							- Lacks for lazy evaluations								
+						</aside>
+					</section>
+				</section>
+				<section>
+					<h2>Adding Lodash to a project</h2>
+					<p class="left">In a browser:</p>
+					<pre><code class="hljs custom" data-trim>
+						<script src="lodash.js"></script>								
+						<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+					</code></pre>
+					<p class="left">Using npm:</p>
+					<pre><code class="hljs custom" data-trim>
+						$ npm i -g npm
+						$ npm i --save lodash
+					</code></pre>
+					<p class="left">In Node.js:</p>
+					<pre><code class="hljs custom" data-trim>
+						// Load the full build.
+						var _ = require('lodash');
+						// Load the core build.
+						var _ = require('lodash/core');
+						// Load the FP build for immutable auto-curried iteratee-first data-last methods.
+						var fp = require('lodash/fp');
+							
+						// Load method categories.
+						var array = require('lodash/array');
+						var object = require('lodash/fp/object');
+					</code></pre>
+					<aside class="notes">
+						Ok, how we can use this library.  
+						There are different ways to add lodash to your project.
+						You can add it in a browser by inserting the script tag in your html. You can either use link to the files on your host, or you can use the cdn version.
+						You can install it with npm just like we install everything with npm.
+						And, In Node.js you can add Lodash like this. As you can see, there are a lot of options. So, you can require the whole library, or, for example only the module, that contains functions for working with Arrays, or you can even require just one function you need.
+						What is more, you can also use a cdn link to get a particular module or function, just like with Node.
+					</aside>
+				</section>
+				<section>
+					<h2>Awesome <a href="https://lodash.com/docs/4.17.11">Documentation</a></h2>
+					<p>Array, Collection, Date, Function, Lang, Math, Number, Object, Seq, String, Util, Properties, Methods.</p>
+					<aside class="notes">
+						As I mentioned earlier Lodash has a really Awesome Documentation. It’s well-structured and has lots of examples, it’s divided into next sections:
+						Array, Collection, Date, Function, Lang, Math, Number, Object, Seq, String, Util, Properties, Methods.
+					</aside>
+				</section>
+				<section>
+					<h2>How use lodash</h2>
+					<pre class="fragment"><code class="hljs large code" data-trim>
+						_.funcName(argument, iteratee)
+					</code></pre>
+					<aside class="notes">
+						In most cases, Lodash functions are used like this:
+						_.funcName(argument, iteratee)
+						Of course, there are too many functions in Lodash for a usual man to remember, but in most cases function names are pretty straightforward, and we can say, there are several function families, grouped according to some similar logic:
+						For example, isSmth checks if the argument is Smth, sorted* functions are optimized for working with sorted Arrays, and *Depth functions can control the depth of some recursive operations.
+					</aside>
+				</section>
+				<section>
+					<h2>Array methods</h2>
+					<p>fill, concat, pull, join, slice, sum, max, min, mean, ...</p>
+					<p class="left">_.compact(array)</p>
+					<pre><code class="hljs custom" data-trim>
+						_.compact([5, 0, undefined, NaN, 16, 'Rick', null, false, 2, '', 3]);
+						// => [5, 16, "Rick", 2, 3]
+					</code></pre>
+					<p class="left">_.uniq(array)</p>
+					<pre><code class="hljs custom" data-trim>
+						_.uniq([2, 1, 2]);
+						// => [2, 1]
+					</code></pre>
+					<p class="left">_.fromPairs(pairs)</p>
+					<pre><code class="hljs custom" data-trim>
+						_.fromPairs([['a', 1], ['b', 2]]);
+						// => { 'a': 1, 'b': 2 }
+					</code></pre>
+					<aside class="notes">
+						Now, let’s look some Array methods.
+						You may have already noticed, that Lodash duplicates a lot of methods, that most browsers already understand without Lodash, such as forEach, map, filter, etc. In most cases, Lodash equivalents were created earlier, and their current implementations are pretty smart. If Lodash notices, that browser already has some function, it lets browser implementation of this function do the job, otherwise, it uses its own implementation.
+						Here some examples:
+				    	_.compact method removes all the faulty values from an array
+						_.uniq method create a duplicate-free version of an array, for equality comparisons, in which only the first occurrence of each element is kept. The order of result values is determined by the order they occur in the array.
+						_fromPairsthis method returns an object composed from key-value pairs.
+					</aside>
+				</section>
+				<section>
+					<section>
+						<h2>Object methods</h2>
+						<p>assign, at, keys, forIn, keys, values, ...</p>
+						<p class="left">Object manipulation</p>
+						<pre><code class="hljs custom" data-trim>
+							var item = {"a":{"b":{"c":3}}};
+
+							_.get(item, 'a.b.c', 3);
+							// → 3
+							
+							_.set(item, 'a.b.c', 5);
+							// → {"a":{"b":{"c":5}}}
+							
+							_.has(item, 'a.b.c.d');
+							// → false								
+						</code></pre>
+						<aside class="notes">
+							Here are some Object methods. 
+							We can perform object manipulation with get and set functions, which speak for themselves, and we can check if an object has some property with has function.							
+						</aside>
+					</section>
+					<section>
+						<p class="left">_.at(object, [paths])</p>
+						<pre><code class="hljs custom" data-trim>
+							var object = { 'a': [{ 'b': { 'c': 3 } }, 4] };
+							_.at(object, ['a[0].b.c', 'a[1]']);
+							// => [3, 4]
+						</code></pre>
+						<p class="left">_.findKey(object, [predicate=_.identity])</p>
+						<pre><code class="hljs custom" data-trim>
+							var users = {
+								'barney':  { 'age': 36, 'active': true },
+								'fred':    { 'age': 40, 'active': false },
+								'pebbles': { 'age': 1,  'active': true }
+							};
+							
+							_.findKey(users, function(o) { return o.age < 40; });
+							// => 'barney' (iteration order is not guaranteed)
+							_.findKey(users, { 'age': 1, 'active': true });
+							// => 'pebbles'
+							_.findKey(users, ['active', false]);
+							// => 'fred'
+						</code></pre>											
+						<aside class="notes">
+							_at method creates an array of values corresponding to paths of object.
+							_findKey method returns the key of the matched element, else undefined.								
+						</aside>
+					</section>
+				</section>
+				<section>
+					<h2>Strings and Numbers</h2>
+					<p>round, sum, multiply, camelCase, snakeCase, kebabCase, trim, pad, ...</p>
+					<p class="left">_.random([lower=0], [upper=1], [floating])</p>
+					<pre><code class="hljs custom" data-trim>
+						_.random(0, 5);
+						// => an integer between 0 and 5		
+						_.random(5);
+						// => also an integer between 0 and 5					 
+						_.random(1.2, 5.2);
+						// => a floating-point number between 1.2 and 5.2
+					</code></pre>
+					<p class="left">_.camelCase([string=''])</p>
+					<pre><code class="hljs custom" data-trim>
+							_.camelCase('Foo Bar');
+							// => 'fooBar'
+							_.camelCase('--foo-bar--');
+							// => 'fooBar'							 
+							_.camelCase('__FOO_BAR__');
+							// => 'fooBar'
+					</code></pre>
+					<aside class="notes">
+						There are also a lot of methods for working with Strings and Numbers.
+						For example, a _random method is a fast way of generating random numbers
+						_.camelCase converts string to camel case,  is the practice of writing phrases such that each word or abbreviation in the middle of the phrase begins with a capital letter, with no intervening spaces or punctuation.
+					</aside>
+				</section>
+				<section>
+					<section>
+						<h2>How to combine?</h2>
+						<pre><code class="hljs custom" data-trim>
+							var users = [
+								{ 'user': 'barney',  'age': 36 },
+								{ 'user': 'fred',    'age': 40 },
+								{ 'user': 'rick',    'age': 18 },
+								{ 'user': 'pebbles', 'age': 11 }
+							];
+							
+							// explicit chaining
+							var youngest = _
+								.chain(users)
+								.sortBy('age')
+								.map( o => o.user + ' is ' + o.age )
+								.head()
+								.value();  // => 'pebbles is 11'
+						</code></pre>
+						<pre><code class="hljs custom" data-trim>
+							// implicit chaining
+							_(users)
+								.sortBy('age')
+								.map( o => o.user + ' is ' + o.age )
+								.head();  // => 'pebbles is 11'
+						</code></pre>
+						<aside class="notes">
+							Let’s look at couple chaining examples.
+							Let us assume that we want to get a string, telling us the name and the age of the youngest user in a collection of objects.
+							We can do it easily with the help of Lodash chain function. We can use it either explicitly, or implicitly. When doing it explicitly, we first need to wrap our collection of users with chain method. After that goes the series of Lodash functions, and we have to call value() method at the end of the chain, in order to actually get the result.
+							With implicit chaining syntax, we don’t need the chain keyword itself, and we also don’t need the value() at the end of the chain. We can just stop the chain of methods at any moment.							
+						</aside>
+					</section>
+					<section>
+						<pre><code class="hljs custom" data-trim>
+							// explicit chaining
+							var arr1 = [10, 15, 20, 25, 30, 15, 25, 35];
+							var sumOfUniqueValues = _.chain(arr1)
+								.uniq()
+								.sum()       // sum returns a single value
+								.value();    //   which must be unwrapped manually with explicit chaining
+							
+							// sumOfUniqueValues is now 135
+						</code></pre>
+						<pre><code class="hljs custom" data-trim>
+							// implicit chaining
+							var arr1 = [10, 15, 20, 25, 30, 15, 25, 35];		
+							var sumOfUniqueValues = _(arr1)
+								.uniq()
+								.sum();      // sum returns a single value and is automatically unwrapped
+											 //   with implicit chaining
+							
+							// sumOfUniqueValues is now 135
+						</code></pre>
+						<aside class="notes">
+							One more example.
+							We want to find sum of unique values in array
+							We can do it easily with the help of Lodash chain function.
+						</aside>
+					</section>
+				</section>
+				<section>
+					<h2>Thank You!</h2>
+					<p>GitHub <a href="https://github.com/Jeka98">Jeka98</a></p>
+				</section>
 			</div>
 		</div>
 
